@@ -1,0 +1,7 @@
+pydantic~=1.10.6
+requests~=2.28.2
+configparser~=5.3.0
+fastapi~=0.95.0
+uvicorn~=0.12.2
+firebase-admin
+firestore~=0.0.8
