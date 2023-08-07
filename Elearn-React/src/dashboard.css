@@ -1,0 +1,61 @@
+.dashboard-home{
+    background-image: none;
+    background-color: white;
+}
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 250px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #c2c0c0; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+}
+.mainframe {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 250px; /* Set the width of the sidebar */
+    margin-left: 300px;
+}
+nav {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 0.5rem 0;
+}
+
+li a {
+    color: #333;
+    text-decoration: none;
+}
+
+li a.active {
+    font-weight: bold;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 150px;
+}
+
+.box {
+    background-color: white;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    height: 350px;
+    width:350px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #0077ff;
+}
