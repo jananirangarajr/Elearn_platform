@@ -1,0 +1,44 @@
+version: '3'
+services:
+  course-management:
+    build: ./Elearn-coursemanagement
+    container_name: course-management
+    ports:
+      - 8001:8001
+    restart: always
+    environment:
+      - COURSE_CONTAINER_NAME=course-management
+
+  user-management:
+    build: ./Elearn-user-management
+    container_name: user-management
+    ports:
+      - 8080:8080
+    depends_on:
+      - course-management
+    environment:
+      - COURSE_CONTAINER_NAME=course-management
+      - USER_CONTAINER_NAME=user-management
+
+  elearn:
+    build: ./Elearn
+    container_name: elearn
+    ports:
+      - 8089:8089
+    depends_on:
+      - course-management
+      - user-management
+    environment:
+      - COURSE_CONTAINER_NAME=course-management
+      - USER_CONTAINER_NAME=user-management
+      - ELEARN_CONTAINER_NAME=elearn
+
+  elearn-react:
+    build: ./Elearn-React
+    container_name: elearn-react
+    ports:
+      - 3000:3000
+    depends_on:
+      - elearn
+    environment:
+      - ELEARN_CONTAINER_NAME=elearn

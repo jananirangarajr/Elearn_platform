@@ -2,7 +2,7 @@ import json
 import requests
 import configparser
 import logging
-
+import os
 import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
@@ -102,8 +102,9 @@ def enroll_courses(user_id, course_ids):
     try:
         config = configparser.ConfigParser()
         config.read('./app/ConfigFile.properties')
-        url = config.get('request','url')+config.get('request','port')+"/getcourseslist"
-        # url = 'http://localhost:8001/getcourseslist'
+#         url = config.get('request','url')+config.get('request','port')+"/getcourseslist"
+        course_container = os.environ.get('COURSE_CONTAINER_NAME')
+        url = "http://"+course_container+":8001/getcourseslist"
         logger.info("url", url)
         response = requests.request(method='GET',url=url,json={"ids" : course_ids})
         doc_ref = firestore.db.collection(u'User').document(f'{user_id}')

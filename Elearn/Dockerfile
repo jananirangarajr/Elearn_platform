@@ -1,4 +1,13 @@
-docker build  -t elearn .
-docker stop elearn-container
-docker rm elearn-container
-docker run --name elearn-container --network new-network -d -p 8089:8089 elearn
+FROM python:3.9
+
+WORKDIR /home
+
+COPY ./requirements.txt /home/requirements.txt
+
+RUN pip install --no-cache-dir -r /home/requirements.txt
+
+COPY ./app /home/app/
+
+ENV PYTHONPATH "${PYTHONPATH}:/home/app/"
+
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8089"]
